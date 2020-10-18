@@ -24,10 +24,8 @@
 
 Image Matting in a natural image setting involving complex scenes is a challenging problem. We
 tackle it using a semi-automatic approach relying on approximate matte from an image gradient
-given a user-supplied trimap. We formulate the problem as Poisson matting: where we
-approximate the gradient matte field from image and solve for image matte using poison
-equations. We use global Poisson matting, a semi-automatic approach to approximate matte from
-an image gradient given a user-supplied trimap F blended. Global poisson matting fails to generate
+given a user-supplied trimap. We formulate the problem as Poisson matting: where the gradient matte field is approximated from image and image matte is solved using poison equations. We use global Poisson matting, a semi-automatic approach to approximate matte from
+an image gradient given a user-supplied trimap. Global poisson matting fails to generate
 a good matte in complex scenes. To combat it we introduce local Poison matting and manipulate
 the continuous gradient field in a local region. The image gradients are visually distinguishable in
 local regions and thus user's knowledge in the local gradient field can be exploited to get better
@@ -38,12 +36,10 @@ mattes.
 
 Image matting in our setting refers to foreground extraction from any given image.
 A new image can be blended from a background image and foreground image with its "alpha matte".
-
-
-I = alpha( x , y)* F ( x, y ) + ( 1 − alpha) B (x ,y)     −  ( 1 ) <br>
-where alpha(x,y) is the alpha matte of the given image, F(x,y) is the foreground image and B(x,y) is
+I = ɑ(x, y)* F (x, y) + (1 − ɑ(x, y)* B(x, y)     −  ( 1 ) <br>
+where ɑ(x, y) is the alpha matte of the given image, F(x, y) is the foreground image and B(x, y) is
 the background image.
-In natural image matting alpha, F and B need to be estimated.
+In natural image matting, all alpha, F and B need to be estimated.
 
 ### Poisson matting
 
@@ -54,8 +50,8 @@ which are not possible with conventional matting technique. <br>
 
 **Steps** 
 ##### 1. Approximating the gradient field of matte from the input image.
-In order to do so we take partial derivative on both sides of eq(i)
-       ∇I = (F-B)∇ɑ + ɑ∇F + (1-ɑ)∇B   -- (2)  <br>
+In order to approximate the gradient field of matte we take partial derivative on both sides of eq(i) <br>
+       ∇I = (F - B)∇ɑ + ɑ∇F + (1 - ɑ)∇B   -- (2)  <br>
 where <a href="https://www.codecogs.com/eqnedit.php?latex=\nabla&space;=&space;(\frac{\partial&space;}{\partial&space;x},\frac{\partial&space;}{\partial&space;y})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\nabla&space;=&space;(\frac{\partial&space;}{\partial&space;x},\frac{\partial&space;}{\partial&space;y})" title="\nabla = (\frac{\partial }{\partial x},\frac{\partial }{\partial y})" /></a> <br>
 Equation (2) is taken for R, G, B channels separately.
 When the foreground and background are smooth, the gradient field can be approximated
@@ -109,7 +105,7 @@ c) ![](img/extracted.png) d) ![](img/new_bg.png) <br>
 
 a) Original Image <br>
 b) Matte generated using Poisson Matting <br>
-c) Image with the extracted koala and a constant-colour background   <br>                                                                   
+c) Image with the extracted koala and a constant-colour background                                                                  
 d) Image with a new background <br>
 
 
