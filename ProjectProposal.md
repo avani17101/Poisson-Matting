@@ -16,9 +16,7 @@
 
 ## Main Goal 
 
-#### Matting for natural images in complex scenes by calculating the gradient of matte from
-
-#### image and solving Poisson equations.
+#### Matting for natural images in complex scenes by calculating the gradient of matte from image and solving Poisson equations.
 
 ## Problem Definition 
 
@@ -65,10 +63,10 @@ Equation (3) shows that matte gradient is proportional to the image gradient. Th
 
 ### Global poisson matting
 
-The image is divided into three regions: definitely foreground Ω<sub>F</sub>, definitely background $\Omega_B$ and “unknown” Ω. To recover matte for the unknown region, we minimize the following equation:
+The image is divided into three regions: definitely foreground Ω<sub>F</sub>, definitely background Ω<sub>B</sub> and “unknown” Ω. To recover matte for the unknown region, we minimize the following equation:
 This is an Iterative optimization process as follows:
 ##### 1. (F - B) Initialization  
-For each pixel in Ω, F and B are approximated by corresponding to nearest pixels in $\Omega_F$​ and $\Omega_B $​. The (F - B) image is then smoothened by a Gaussian filter.
+For each pixel in Ω, F and B are approximated by corresponding to nearest pixels in Ω<sub>F</sub> and Ω<sub>B</sub>​. The (F - B) image is then smoothened by a Gaussian filter.
 
 ##### 2. α reconstruction 
 By solving the Poisson equation using current (F - B) and ∇I.
