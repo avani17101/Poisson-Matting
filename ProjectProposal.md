@@ -38,10 +38,12 @@ mattes.
 
 Image matting in our setting refers to foreground extraction from any given image.
 A new image can be blended from a background image and foreground image with its "alpha matte".
-New image: $$ I = \alpha( x , y) F ( x, y ) + ( 1 − \alpha) B (x ,y)  −  ( 1 ) $$
-where $\alpha(x,y)$ is the alpha matte of the given image, $F(x,y)$ is the foreground image and $B(x,y)$ is
+
+
+I = alpha( x , y)* F ( x, y ) + ( 1 − alpha) B (x ,y)     −  ( 1 ) <br>
+where alpha(x,y) is the alpha matte of the given image, F(x,y) is the foreground image and B(x,y) is
 the background image.
-In natural image matting $\alpha$, $F$ and $B$ need to be estimated.
+In natural image matting alpha, F and B need to be estimated.
 
 ### Poisson matting
 
@@ -53,12 +55,12 @@ which are not possible with conventional matting technique. <br>
 **Steps** 
 ##### 1. Approximating the gradient field of matte from the input image.
 In order to do so we take partial derivative on both sides of eq(i)
-       $$\nabla I = ( F − B)\nabla\alpha + \alpha\nabla F + ( 1 −\alpha)\nabla B   −  (2)$$
-where $ \nabla = (\frac{\partial }{\partial x},\frac{\partial }{\partial y})$
+       ∇I = (F-B)∇ɑ + ɑ∇F + (1-ɑ)∇B   -- (2)  <br>
+where <a href="https://www.codecogs.com/eqnedit.php?latex=\nabla&space;=&space;(\frac{\partial&space;}{\partial&space;x},\frac{\partial&space;}{\partial&space;y})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\nabla&space;=&space;(\frac{\partial&space;}{\partial&space;x},\frac{\partial&space;}{\partial&space;y})" title="\nabla = (\frac{\partial }{\partial x},\frac{\partial }{\partial y})" /></a> <br>
 Equation (2) is taken for R, G, B channels separately.
 When the foreground and background are smooth, the gradient field can be approximated
 
-$$ \nabla\alpha = \frac{1}{F-B} \nabla I      -(3)$$
+<a href="https://www.codecogs.com/eqnedit.php?latex=\nabla\alpha&space;=&space;\frac{1}{F-B}&space;\nabla&space;I&space;-(3)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\nabla\alpha&space;=&space;\frac{1}{F-B}&space;\nabla&space;I&space;-(3)" title="\nabla\alpha = \frac{1}{F-B} \nabla I -(3)" /></a>
 
 ##### 2. Reconstructing matte by solving poisson equations
 
@@ -67,15 +69,15 @@ Equation (3) shows that matte gradient is proportional to the image gradient. Th
 
 ### Global poisson matting
 
-The image is divided into three regions: definitely foreground $\Omega_F$​, definitely background $\Omega_B$ and “unknown” $\Omega$. To recover matte for the unknown region, we minimize the following equation:
+The image is divided into three regions: definitely foreground Ω<sub>F</sub>, definitely background $\Omega_B$ and “unknown” Ω. To recover matte for the unknown region, we minimize the following equation:
 This is an Iterative optimization process as follows:
 ##### 1. (F - B) Initialization  
-For each pixel in Ω, F and B are approximated by corresponding to nearest pixels in $\Omega_F$​ and $\Omega_B $​. The $(F - B)$ image is then smoothened by a Gaussian filter.
+For each pixel in Ω, F and B are approximated by corresponding to nearest pixels in $\Omega_F$​ and $\Omega_B $​. The (F - B) image is then smoothened by a Gaussian filter.
 
 ##### 2. α reconstruction 
-By solving the Poisson equation using current $(F - B)$ and $\nabla I$.
+By solving the Poisson equation using current (F - B) and ∇I.
 ##### 3. F,B refinement 
-Let ${\Omega^{+}}_F = \{ p \epsilon \Omega | {\alpha}_{p} > 0.95, I​_p \approx F_​p \}$ and ${\Omega^{+}}_B = \{ p \epsilon \Omega | {\alpha}_{p} < 0.05, I​_p \approx B_​p \}$. Update $F_​p$ ​and $B_​p$​ according to the color of nearest pixel in ​${\Omega^{+}}_F  \cup {\Omega}_F$​ and in ${\Omega^{+}}_B  \cup {\Omega}_B$.
+Let ${\Omega^{+}}_F = \{ p \epsilon \Omega | {\alpha}_{p} > 0.95, I​_p \approx F_​p \}$ and ${\Omega^{+}}_B = \{ p \epsilon \Omega | {\alpha}_{p} < 0.05, I​_p \approx B_​p \}$. Update F<sub>p</sub> ​and B<sub>p</sub>​ according to the color of nearest pixel in <a href="https://www.codecogs.com/eqnedit.php?latex={\Omega^{&plus;}}_F&space;\cup&space;{\Omega}_F" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{\Omega^{&plus;}}_F&space;\cup&space;{\Omega}_F" title="{\Omega^{+}}_F \cup {\Omega}_F" /></a>​ and in <a href="https://www.codecogs.com/eqnedit.php?latex={\Omega^{&plus;}}_B&space;\cup&space;{\Omega}_B" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{\Omega^{&plus;}}_B&space;\cup&space;{\Omega}_B" title="{\Omega^{+}}_B \cup {\Omega}_B" /></a>.
 
 Steps 2 and 3 are iterated until the change is sufficiently small.
 
@@ -83,10 +85,11 @@ Steps 2 and 3 are iterated until the change is sufficiently small.
 
 Equation (2) can be rewritten as:
 
-$$ \nabla\alpha = A(\nabla I - D)$$
-where $$ A = \frac{1}{F-B} , D = [\alpha\nabla F] + (1-\alpha)\nabla B ]$$​
+<a href="https://www.codecogs.com/eqnedit.php?latex=\nabla\alpha&space;=&space;A(\nabla&space;I&space;-&space;D)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\nabla\alpha&space;=&space;A(\nabla&space;I&space;-&space;D)" title="\nabla\alpha = A(\nabla I - D)" /></a>
 
-When the background orforeground have strong gradients, global Poisson matting results ina poor quality mattes. $A$ affects the matte gradient scale in that increasing $A$ would sharpen boundaries. $D$ is a gradient field caused by the background and foreground. Hence, we need to estimate $A$ and $D$ to approach the ground truth, $A^*$ and $D^*$.
+where <a href="https://www.codecogs.com/eqnedit.php?latex=A&space;=&space;\frac{1}{F-B}&space;,&space;D&space;=&space;[\alpha\nabla&space;F]&space;&plus;&space;(1-\alpha)\nabla&space;B&space;]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?A&space;=&space;\frac{1}{F-B}&space;,&space;D&space;=&space;[\alpha\nabla&space;F]&space;&plus;&space;(1-\alpha)\nabla&space;B&space;]" title="A = \frac{1}{F-B} , D = [\alpha\nabla F] + (1-\alpha)\nabla B ]" /></a>
+
+When the background orforeground have strong gradients, global Poisson matting results ina poor quality mattes. A affects the matte gradient scale in that increasing A would sharpen boundaries. D is a gradient field caused by the background and foreground. Hence, we need to estimate A and D to approach the ground truth, A* and D*.
 
 When the background or foreground have strong gradients, global Poisson matting results in a poor quality mattes. A few techniques have been developed to solve this. They are:
 1. Poisson Matting in Local Region 
