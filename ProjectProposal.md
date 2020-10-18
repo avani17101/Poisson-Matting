@@ -117,11 +117,12 @@ Poisson matting can be applied to matting with multiple backgrounds by calculati
 
 ![](img/mean_multi_bg_eq.png)
 
-where B<sub>t</sub> is Background of t<sup>th</sup> image. 
+where B<sub>t</sub> is Background of t<sup>th</sup> image. <br>
 We expect poison matting to work better on multiple backgrounds.  <br>
 
 
 ![](img/multi_bg.png) <br>
+As shown the matte is obtained by calculating mean image of 3 top images. The latter 3 images are mean image, obtained matte through poisson matting, and composite image. 
 
 #### De-fogging (Implementation as a part of this project is tentative) 
 
