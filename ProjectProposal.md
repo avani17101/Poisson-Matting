@@ -77,7 +77,9 @@ For each pixel in Ω, F and B are approximated by corresponding to nearest pixel
 ##### 2. α reconstruction 
 By solving the Poisson equation using current (F - B) and ∇I.
 ##### 3. F,B refinement 
-Let ${\Omega^{+}}_F = \{ p \epsilon \Omega | {\alpha}_{p} > 0.95, I​_p \approx F_​p \}$ and ${\Omega^{+}}_B = \{ p \epsilon \Omega | {\alpha}_{p} < 0.05, I​_p \approx B_​p \}$. Update F<sub>p</sub> ​and B<sub>p</sub>​ according to the color of nearest pixel in <a href="https://www.codecogs.com/eqnedit.php?latex={\Omega^{&plus;}}_F&space;\cup&space;{\Omega}_F" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{\Omega^{&plus;}}_F&space;\cup&space;{\Omega}_F" title="{\Omega^{+}}_F \cup {\Omega}_F" /></a>​ and in <a href="https://www.codecogs.com/eqnedit.php?latex={\Omega^{&plus;}}_B&space;\cup&space;{\Omega}_B" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{\Omega^{&plus;}}_B&space;\cup&space;{\Omega}_B" title="{\Omega^{+}}_B \cup {\Omega}_B" /></a>.
+Let <br> 
+![](img/eq_refinement.png)<br>  
+Update F<sub>p</sub> ​and B<sub>p</sub>​ according to the color of nearest pixel in <a href="https://www.codecogs.com/eqnedit.php?latex={\Omega^{&plus;}}_F&space;\cup&space;{\Omega}_F" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{\Omega^{&plus;}}_F&space;\cup&space;{\Omega}_F" title="{\Omega^{+}}_F \cup {\Omega}_F" /></a>​ and in <a href="https://www.codecogs.com/eqnedit.php?latex={\Omega^{&plus;}}_B&space;\cup&space;{\Omega}_B" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{\Omega^{&plus;}}_B&space;\cup&space;{\Omega}_B" title="{\Omega^{+}}_B \cup {\Omega}_B" /></a>.
 
 Steps 2 and 3 are iterated until the change is sufficiently small.
 
@@ -97,7 +99,6 @@ When the background or foreground have strong gradients, global Poisson matting 
        a) Channel Selection <br>
        b) Local Filtering <br>
        c) Refinement Process <br>
-
 
 ## Results 
 
