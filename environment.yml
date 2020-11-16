@@ -1,0 +1,4 @@
+name: dip_project
+channels:
+  - defaults
+prefix: /home/avani/anaconda3/envs/dip_project
