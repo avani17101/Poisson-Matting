@@ -50,5 +50,5 @@ The inputs of the code are
 * After global matting results are obtained we apply local matting which is semi-supervised to get the final matte. 
 Select roi will ask to select regions in image whose matte want to improve upon. Please select regions when pop-up select regions comes.
 ![Test Image 1](attachments/out.gif)
-* The final matte is further refined by diffusion, highpass and filtering boosting. 
+* The final matte is further refined by diffusion, highpass filtering and boosting. 
 * We also implemented mean background method where user can output the images with same foreground but different background to get the required matte which can be blended to any new background. Refer multi-background function for details on usage.
