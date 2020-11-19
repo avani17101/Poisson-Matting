@@ -18,7 +18,6 @@ pip3 install -r requirements.txt
 ```
 
 ### Usage
-* 
 ```bash
 cd project-made-online
 ```
@@ -36,6 +35,7 @@ jupyter-notebook
 * img (contains input images)
 * outs (contains output images)
 * attachments (contains attachments)
+* extras (contains extra implementations and examples)
 * requirements.txt
 
 ### Working
@@ -46,10 +46,10 @@ The inputs of the code are
 3) The desired background(to be changed in input image)
 
 * Only thing to be replaced is image name in main with desired input images(in read input and roi select)
-* Do kernel>run all and images would be generated in desired background along with refined mattes. 
-* Generated images from global matting and alpha blending in new background are saved in img folder.
-* After global matting results are obtained we apply local matting which is semi-superwised to get the final matte. 
+* Do kernel >run all and images would be generated in desired background along with refined mattes. 
+* Generated images from global matting and alpha blending in new background are saved in "outs" folder.
+* After global matting results are obtained we apply local matting which is semi-supervised to get the final matte. 
 Select roi will ask to select regions in image whose matte want to improve upon. Please select regions when pop-up select regions comes.
 ![Test Image 1](attachments/out.gif)
-* The final matte is further refined by diffusion, boosting, highpass filtering. 
+* The final matte is further refined by diffusion, highpass and filtering boosting. 
 * We also implemented mean background method where user can output the images with same foreground but different background to get the required matte which can be blended to any new background. Refer multi-background function for details on usage.
