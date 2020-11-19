@@ -32,7 +32,6 @@ jupyter-notebook
     * examples
     * Select_roi.py
     * select_roi_curve.py
-    * extras (contains extra implementations and examples)
 * img (contains input images)
 * outs (contains output images)
 * attachments (contains attachments)
