@@ -11,7 +11,7 @@ or
 Click 'Clone or Download' on the top right hand side of the repository.
 
 ### Install packages
-* install requirements using package manager pip(Use the package manager [pip](https://pip.pypa.io/en/stable/) or conda(https://docs.conda.io/en/latest/).
+* install requirements using package manager pip(Use the package manager [pip](https://pip.pypa.io/en/stable/)
 
 ```bash
 pip3 install -r requirements.txt
@@ -26,14 +26,16 @@ cd project-made-online
 ```bash
 jupyter-notebook
 ```
-### Structure
+### Repository Structure
 * documents
 * src
-    * main
+    * main.ipynb
     * examples
     * Select_roi.py
     * select_roi_curve.py
 * img (contains input images)
+* outs (contains output images)
+* attachments (contains attachments)
 * requirements.txt
 
 ### Working
@@ -43,11 +45,11 @@ The inputs of the code are
 2) Trimap of the input image
 3) The desired background(to be changed in input image)
 
-* Only thing to be replaced is image name in main with desired input images. 
+* Only thing to be replaced is image name in main with desired input images(in read input and roi select)
 * Do kernel>run all and images would be generated in desired background along with refined mattes. 
 * Generated images from global matting and alpha blending in new background are saved in img folder.
 * After global matting results are obtained we apply local matting which is semi-superwised to get the final matte. 
 Select roi will ask to select regions in image whose matte want to improve upon. Please select regions when pop-up select regions comes.
 ![Test Image 1](attachments/out.gif)
 * The final matte is further refined by diffusion, boosting, highpass filtering. 
-* We also implemented mean background method where user can output the images with same foreground but different background to get the required matte which can be blended to any new background. refer multi-background function for details on uage.
+* We also implemented mean background method where user can output the images with same foreground but different background to get the required matte which can be blended to any new background. Refer multi-background function for details on usage.
