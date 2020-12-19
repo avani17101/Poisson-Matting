@@ -56,11 +56,16 @@ Select roi will ask to select regions in image whose matte want to improve upon.
 
 ### Results
 Inputs: input image, trimap, desired background
-Output: image in new background
-**Working**
+Output: image in new background <br>
 ![res1](attachments/result1.png)
-![res2](attachments/result2.png)
+An image matte is generated which from poisson matting using inputs of original image and trimap.
+This matte is then alpha-blended to with desired background to give image in new background. <br>
+<br>
 
-For details check [ppt](Documents/Final_Presentation.pdf)
+
+![res2](attachments/result2.png)
+The difference between Global matting and Refinement.
+
+For detailed results check [ppt](Documents/Final_Presentation.pdf)
 
 
