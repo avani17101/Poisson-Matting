@@ -53,3 +53,14 @@ Select roi will ask to select regions in image whose matte want to improve upon.
 ![Test Image 1](attachments/out.gif)
 * The final matte is further refined by diffusion, highpass filtering and boosting. 
 * We also implemented mean background method where user can output the images with same foreground but different background to get the required matte which can be blended to any new background. Refer multi-background function for details on usage.
+
+### Results
+Inputs: input image, trimap, desired background
+Output: image in new background
+**Working**
+![res1](attachments/result1.png)
+![res2](attachments/result2.png)
+
+For details check [ppt](Documents/Final_Presentation.pdf)
+
+
